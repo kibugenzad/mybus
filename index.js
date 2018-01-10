@@ -23,6 +23,12 @@ const server = app.listen(app.get('port'), function () {
 
 const io = socketIO(server, {pingTimeout: 30000});
 
+//import the apis
+const mapData = require("./api/mapData");
+
+//firing the apis
+app.use("/api/mapData", mapData)
+
 app.get('/', function (req, res) {
     res.send("test");
 })
