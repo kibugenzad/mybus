@@ -38,8 +38,8 @@ io.on('connection', function(socket){
     //get all buses
     socket.on("map_data", function (data) {
         console.log(data)
-        get_all_buses.all_buses(data, function (err, res) {
-            
+        get_all_buses.allbuses(data, function (err, res) {
+
         })
     });
 })

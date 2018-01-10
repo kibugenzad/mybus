@@ -10,4 +10,4 @@ var allbuses = function (data, cb) {
     console.log(data[0])
 };
 
-exports.allbuses = allbuses;
+module.exports.allbuses = allbuses;
