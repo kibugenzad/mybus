@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 // create connection for localhost
 const db_config = mysql.createPool({
-    host: '165.227.123.140',
+    host: 'us-cdbr-iron-east-05.cleardb.net',
     user: 'bfb88c0c77e64c',
     password: '04557e23',
     database: 'heroku_1e74818bb24eeb4',
@@ -21,15 +21,12 @@ exports.connection =
                     if (eventNameIndex.error) {
                         eventNameIndex.error();
                     }
-                    console.log(error)
                 }
                 if (conn) {
                     var q = conn.query.apply(conn, queryArgs);
                     q.on('end', function () {
                         conn.release();
                     });
-
-                    console.log("connection ok")
 
                     events.forEach(function (args) {
                         q.on.apply(q, args);

@@ -29,6 +29,7 @@ const mapData = require("./api/mapData");
 //firing the apis
 app.use("/api/mapData", mapData)
 
-app.get('/', function (req, res) {
-    res.send("test");
+// socket connection
+io.on('connection', function(socket){
+    console.log("user connected ", socket.id)
 })
