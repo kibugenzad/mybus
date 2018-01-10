@@ -25,6 +25,7 @@ const io = socketIO(server, {pingTimeout: 30000});
 
 //import the apis
 const mapData = require("./api/mapData");
+const get_all_buses = require("./api/all_buses");
 
 //firing the apis
 app.use("/api/mapData", mapData)
@@ -37,5 +38,8 @@ io.on('connection', function(socket){
     //get all buses
     socket.on("map_data", function (data) {
         console.log(data)
+        get_all_buses.all_buses(data, function (err, res) {
+            
+        })
     });
 })

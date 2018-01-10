@@ -5,10 +5,6 @@ const moment = require('moment');
 
 const db = require("../db/connection")
 
-router.get("/", function (req, res) {
-
-})
-
 router.post("/", function (req, res) {
     console.log(req.body)
     if (req.body.latitude !== undefined || req.body.latitude !== undefined) {
@@ -49,8 +45,5 @@ router.post("/", function (req, res) {
         }
     }
 });
-
-//get all buses
-
 
 module.exports = router;
