@@ -7,16 +7,15 @@ const db = require("../db/connection");
 
 //get all buses
 var allbuses = function (data, cb) {
-    setInterval(function () {
-        const sql = "SELECT * FROM bus_map_data";
-        db.connection.query(sql, function (err, result) {
-            if (err) {
-                return console.log("update", err.stack)
-            }
 
-            cb(result)
-        })
-    }, 1000)
+    const sql = "SELECT * FROM bus_map_data";
+    db.connection.query(sql, function (err, result) {
+        if (err) {
+            return console.log("update", err.stack)
+        }
+
+        cb(result)
+    })
 };
 
 module.exports.allbuses = allbuses;
