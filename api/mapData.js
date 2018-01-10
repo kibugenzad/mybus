@@ -10,6 +10,7 @@ router.get("/", function (req, res) {
 })
 
 router.post("/", function (req, res) {
+    console.log(req.body)
     if (req.body.latitude !== undefined || req.body.latitude !== undefined) {
         if (req.body.plate_number !== '') {
             const sql_check_bus = "SELECT bus_key FROM bus_map_data WHERE plate_number = ?";
