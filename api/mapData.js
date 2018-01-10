@@ -29,8 +29,8 @@ router.post("/", function (req, res) {
                     if (req.body.latitude !== '' && req.body.longitude !== '') {
                         let mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
                         const bus_key = randtoken.generate(250);
-                        const sql = "INSERT INTO `bus_map_data` (`id`,`bus_key`,`plate_number`,`latitude`,`longitude`,`title`,`description`,`last_update`,`date_created`) VALUES (0, ?, ? ,?, ?, ?, ?, ?, ?)";
-                        db.connection.query(sql, [bus_key, req.body.plate_number, req.body.latitude, req.body.longitude, req.body.plate_number, req.body.description, mysqlTimestamp, mysqlTimestamp], function (err, result) {
+                        const sql = "INSERT INTO `bus_map_data` (`id`,`bus_key`,`plate_number`,`fleet_number`,`countings`,`latitude`,`longitude`,`title`,`description`,`last_update`,`date_created`) VALUES (0, ?, ? ,?, ?, ?, ?, ?, ?)";
+                        db.connection.query(sql, [bus_key, req.body.plate_number, req.body.fleet_number, req.body.countings, req.body.latitude, req.body.longitude, req.body.plate_number, req.body.description, mysqlTimestamp, mysqlTimestamp], function (err, result) {
                             if (err) {
                                 return console.log(err.stack)
                             }

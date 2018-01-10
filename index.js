@@ -26,6 +26,7 @@ const io = socketIO(server, {pingTimeout: 30000});
 //import the apis
 const mapData = require("./api/mapData");
 const get_all_buses = require("./api/all_buses");
+const get_nearest_buses = require("./api/nearest_buses");
 
 //firing the apis
 app.use("/api/mapData", mapData)
@@ -37,9 +38,16 @@ io.on('connection', function(socket){
 
     //get all buses
     socket.on("map_data", function (data) {
-        console.log(data)
-        get_all_buses.allbuses(data, function (err, res) {
+        for(var i in data){
+            if (data[i].show_buses_near_me){
+                get_nearest_buses.nearest_buses(data, function (res) {
 
-        })
+                })
+            }else{
+                get_all_buses.allbuses(data, function (res) {
+                    console.log(res)
+                })
+            }
+        }
     });
 })
