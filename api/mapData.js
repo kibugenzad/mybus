@@ -47,6 +47,9 @@ router.post("/", function (req, res) {
             })
         }
     }
-})
+});
+
+//get all buses
+
 
 module.exports = router;

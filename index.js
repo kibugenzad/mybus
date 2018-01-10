@@ -32,4 +32,9 @@ app.use("/api/mapData", mapData)
 // socket connection
 io.on('connection', function(socket){
     console.log("user connected ", socket.id)
+
+    //get all buses
+    socket.on("map_data", function (data) {
+        console.log(data)
+    });
 })
