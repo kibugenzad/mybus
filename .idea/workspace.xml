@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="89c83ba4-5021-485d-b81a-0b55d9f0b391" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/all_buses.js" afterPath="$PROJECT_DIR$/api/all_buses.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/api/all_buses.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -188,12 +187,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1515579971051</updated>
-      <workItem from="1515579972497" duration="10923000" />
+      <workItem from="1515579972497" duration="11243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10923000" />
+    <option name="totallyTimeSpent" value="11243000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1421" height="827" extended-state="0" />
@@ -272,7 +271,7 @@
     <entry file="file://$PROJECT_DIR$/api/all_buses.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding />
         </state>
       </provider>
