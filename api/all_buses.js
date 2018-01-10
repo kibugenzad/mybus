@@ -7,7 +7,10 @@ const db = require("../db/connection");
 
 //get all buses
 var allbuses = function (data, cb) {
-    console.log(data[0])
+
+    for(var i in data){
+        console.log(data[i])
+    }
 };
 
 module.exports.allbuses = allbuses;
