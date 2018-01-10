@@ -40,8 +40,8 @@ io.on('connection', function(socket){
     socket.on("map_data", function (data) {
         for(var i in data){
             if (data[i].show_buses_near_me){
-                get_nearest_buses.nearest_buses(data, function (res) {
-
+                get_all_buses.allbuses(data, function (res) {
+                    console.log(res)
                 })
             }else{
                 get_all_buses.allbuses(data, function (res) {
