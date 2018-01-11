@@ -10,7 +10,7 @@ router.post("/", function (req, res) {
     console.log(req.body)
     const bus_key = randtoken.generate(50);
 
-    var mapdata_ref = firebase.ref('mapData/' + req.body.plate_number);
+    var mapdata_ref = firebase.database().ref('mapData/' + req.body.plate_number + '/bus_key');
 
     mapdata_ref.on('value', function(snapshot) {
         if (snapshot.val() === ''){
@@ -21,9 +21,9 @@ router.post("/", function (req, res) {
             };
             var updates = {};
             updates['mapData/' + req.body.plate_number + snapshot.val()] = postData;
-            firebase.ref().update(updates);
+            firebase.database().ref().update(updates);
         }else{
-            firebase.ref('mapData/' + req.body.plate_number).set({
+            firebase.database().ref('mapData/' + req.body.plate_number).set({
                 bus_key: bus_key,
                 plate_number: req.body.plate_number,
                 fleet_number: req.body.plate_number,
