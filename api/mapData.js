@@ -8,7 +8,7 @@ var serviceAccount = require("./serviceAccountKey.json");
 const db = require("../db/connection");
 
 router.post("/", function (req, res) {
-
+    console.log(req.body)
     const bus_key = randtoken.generate(50);
 
     //save data to firebase
