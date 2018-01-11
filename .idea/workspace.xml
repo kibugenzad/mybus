@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89c83ba4-5021-485d-b81a-0b55d9f0b391" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/config/firebase.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/config/serviceAccountKey.json" afterPath="$PROJECT_DIR$/api/serviceAccountKey.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/mapData.js" afterPath="$PROJECT_DIR$/api/mapData.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -49,18 +51,8 @@
       <file leaf-file-name="mapData.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/mapData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="firebase.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/firebase.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+            <state relative-caret-position="300">
+              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -159,11 +151,6 @@
               <item name="MyBus_Backend" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MyBus_Backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MyBus_Backend" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -184,6 +171,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api" />
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -212,12 +200,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1515579971051</updated>
-      <workItem from="1515579972497" duration="19315000" />
+      <workItem from="1515579972497" duration="19438000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19315000" />
+    <option name="totallyTimeSpent" value="19438000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1421" height="827" extended-state="0" />
@@ -293,7 +281,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/serviceAccountKey.json">
+    <entry file="file://$PROJECT_DIR$/api/serviceAccountKey.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -319,8 +307,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/mapData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state relative-caret-position="300">
+          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
           <folding />
         </state>
       </provider>
