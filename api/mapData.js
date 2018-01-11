@@ -12,10 +12,12 @@ router.post("/", function (req, res) {
     const bus_key = randtoken.generate(50);
 
     //save data to firebase
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        databaseURL: "https://mybus-191611.firebaseio.com"
-    });
+    if (admin.apps.length === 0) {
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            databaseURL: "https://mybus-191611.firebaseio.com"
+        });
+    }
 
     var mapdata_ref = admin.database().ref('mapData/' + req.body.plate_number + '/bus_key');
 
