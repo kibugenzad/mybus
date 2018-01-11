@@ -6,4 +6,4 @@ const firebase = admin.initializeApp({
     databaseURL: "https://mybus-191611.firebaseio.com"
 });
 
-module.exports.firebase = firebase;
+module.exports.firebase = firebase.database();
