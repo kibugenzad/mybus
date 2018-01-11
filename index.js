@@ -11,9 +11,6 @@ const http = require('http').Server(app);
 
 const socketIO = require('socket.io');
 
-const randtoken = require('rand-token');
-const moment = require('moment');
-
 //port
 app.set('port', Number(process.env.PORT || 3000));
 
