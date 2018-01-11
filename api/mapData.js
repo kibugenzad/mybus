@@ -2,25 +2,17 @@ const express = require('express');
 const router = express.Router();
 const randtoken = require('rand-token');
 const moment = require('moment');
-var admin = require("firebase-admin");
-var serviceAccount = require("./serviceAccountKey.json");
 
 const db = require("../db/connection");
+const firebase = require("../config/firebase")
 
 router.post("/", function (req, res) {
     console.log(req.body)
     const bus_key = randtoken.generate(50);
 
-    //save data to firebase
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-        databaseURL: "https://mybus-191611.firebaseio.com"
-    });
-
-    var mapdata_ref = admin.database().ref('mapData/' + req.body.plate_number + '/bus_key');
+    var mapdata_ref = firebase.database().ref('mapData/' + req.body.plate_number + '/bus_key');
 
     mapdata_ref.on('value', function(snapshot) {
-        console.log("value",snapshot.val())
         if (snapshot.val() === ''){
             var postData = {
                 latitude: req.body.latitude,
@@ -29,9 +21,9 @@ router.post("/", function (req, res) {
             };
             var updates = {};
             updates['mapData/' + req.body.plate_number + snapshot.val()] = postData;
-            admin.database().ref().update(updates);
+            firebase.database().ref().update(updates);
         }else{
-            admin.database().ref('mapData/' + req.body.plate_number).set({
+            firebase.database().ref('mapData/' + req.body.plate_number).set({
                 bus_key: bus_key,
                 plate_number: req.body.plate_number,
                 fleet_number: req.body.plate_number,
