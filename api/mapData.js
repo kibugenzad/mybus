@@ -20,6 +20,7 @@ router.post("/", function (req, res) {
     var mapdata_ref = admin.database().ref('mapData/' + req.body.plate_number + '/bus_key');
 
     mapdata_ref.on('value', function(snapshot) {
+        console.log("value",snapshot.val())
         if (snapshot.val() === ''){
             var postData = {
                 latitude: req.body.latitude,
