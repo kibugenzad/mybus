@@ -33,6 +33,7 @@ function add_new(plate_number,fleet_number,countings,latitude,longitude,bus_key)
 }
 
 router.post("/", function (req, res) {
+
     const bus_key = randtoken.generate(50);
 
     if (req.body.latitude !== undefined || req.body.latitude !== undefined) {
