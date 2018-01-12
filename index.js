@@ -32,20 +32,4 @@ app.use("/api/mapData", mapData)
 io.on('connection', function(socket){
 
     console.log("user connected ", socket.id)
-
-    //get all buses
-    socket.on("map_data", function (data) {
-        console.log(data)
-        for(var i in data){
-            if (data[i].show_buses_near_me){
-                get_all_buses.allbuses(data, function (res) {
-                    socket.emit('map_datas', res)
-                })
-            }else{
-                get_all_buses.allbuses(data, function (res) {
-                    socket.emit('map_datas', res)
-                })
-            }
-        }
-    });
 })

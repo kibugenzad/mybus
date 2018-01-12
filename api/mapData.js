@@ -39,6 +39,8 @@ router.post("/", function (req, res) {
                 countings: req.body.countings,
                 latitude: req.body.latitude,
                 longitude: req.body.latitude,
+                title: req.body.title,
+                description: req.body.description,
             });
         }
     });
