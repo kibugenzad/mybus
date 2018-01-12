@@ -35,6 +35,7 @@ io.on('connection', function(socket){
 
     //get all buses
     socket.on("map_data", function (data) {
+        console.log(data)
         for(var i in data){
             if (data[i].show_buses_near_me){
                 get_all_buses.allbuses(data, function (res) {
