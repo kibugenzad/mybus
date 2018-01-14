@@ -1,21 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const randtoken = require('rand-token');
-const moment = require('moment');
 
 const db = require("../db/connection");
 
 //get all buses
-var allbuses = function (data, cb) {
-
+router.post("/", function (req, res) {
     const sql = "SELECT * FROM bus_map_data";
     db.connection.query(sql, function (err, result) {
         if (err) {
             return console.log("update", err.stack)
         }
 
-        cb(result)
+        res.status(200).json({"data": result})
     })
-};
+});
 
-module.exports.allbuses = allbuses;
+module.exports = router;

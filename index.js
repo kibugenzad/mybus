@@ -9,8 +9,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 const http = require('http').Server(app);
 
-const socketIO = require('socket.io');
-
 //port
 app.set('port', Number(process.env.PORT || 3000));
 
@@ -18,15 +16,13 @@ const server = app.listen(app.get('port'), function () {
     console.log('Listening on ' + app.get('port'));
 });
 
-const io = socketIO(server, {pingTimeout: 30000});
-
 //import the apis
 const mapData = require("./api/mapData");
 const get_all_buses = require("./api/all_buses");
-const get_nearest_buses = require("./api/nearest_buses");
 
 //firing the apis
-app.use("/api/mapData", mapData)
+app.use("/api/mapData", mapData);
+app.use("/api/get_buses", get_all_buses);
 
 // socket connection
 io.on('connection', function(socket){
