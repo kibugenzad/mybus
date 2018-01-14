@@ -23,9 +23,3 @@ const get_all_buses = require("./api/all_buses");
 //firing the apis
 app.use("/api/mapData", mapData);
 app.use("/api/get_buses", get_all_buses);
-
-// socket connection
-io.on('connection', function(socket){
-
-    console.log("user connected ", socket.id)
-})
