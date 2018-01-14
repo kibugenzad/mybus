@@ -7,14 +7,15 @@ var serviceAccount = require("./serviceAccountKey.json");
 
 const db = require("../db/connection");
 
+let message = [];
+
 function update_db(latitude,longitude,countings,bus_key) {
     const sql_update = "UPDATE bus_map_data SET latitude = ?, longitude = ?, countings = ? WHERE bus_key = ?";
     db.connection.query(sql_update, [latitude, longitude, countings, bus_key], function (err, updated_res) {
         if (err) {
             return console.log("update", err.stack)
         }
-
-        console.log("updated")
+        message.push({"status": "updated"});
     })
 }
 
@@ -27,8 +28,7 @@ function add_new(plate_number,fleet_number,countings,latitude,longitude,bus_key)
         if (err) {
             return console.log(err.stack)
         }
-
-        console.log("inserted")
+        message.push({"status": "inserted"});
     })
 }
 
@@ -38,48 +38,51 @@ router.post("/", function (req, res) {
 
     if (req.body.latitude !== undefined || req.body.latitude !== undefined) {
         if (req.body.plate_number !== '') {
+
+            add_new(req.body.plate_number,req.body.fleet_number,req.body.countings,req.body.latitude,req.body.longitude,bus_key)
+
             //save data to firebase
-            if (admin.apps.length === 0) {
-                admin.initializeApp({
-                    credential: admin.credential.cert(serviceAccount),
-                    databaseURL: "https://mybus-191611.firebaseio.com"
-                });
-            }
-
-            var mapdata_ref = admin.database().ref('mapData/' + req.body.plate_number + '/bus_key');
-
-            mapdata_ref.on('value', function(snapshot) {
-                if (snapshot.val() === ''){
-                    var postData = {
-                        latitude: req.body.latitude,
-                        longitude: req.body.longitude,
-                        countings: req.body.countings,
-                        last_update: admin.database.ServerValue.TIMESTAMP
-                    };
-                    var updates = {};
-                    updates['mapData/' + req.body.plate_number + snapshot.val()] = postData;
-                    admin.database().ref().update(updates);
-
-                    //update other database
-                    update_db(req.body.latitude,req.body.longitude,req.body.countings,bus_key)
-                }else{
-                    admin.database().ref('mapData/' + req.body.plate_number).set({
-                        bus_key: bus_key,
-                        plate_number: req.body.plate_number,
-                        fleet_number: req.body.fleet_number,
-                        countings: req.body.countings,
-                        latitude: req.body.latitude,
-                        longitude: req.body.longitude,
-                        title: req.body.title,
-                        description: req.body.description,
-                        last_update: admin.database.ServerValue.TIMESTAMP,
-                        date_created: admin.database.ServerValue.TIMESTAMP
-                    });
-
-                    //make copy to db
-                    add_new(req.body.plate_number,req.body.fleet_number,req.body.countings,req.body.latitude,req.body.longitude,bus_key)
-                }
-            });
+            // if (admin.apps.length === 0) {
+            //     admin.initializeApp({
+            //         credential: admin.credential.cert(serviceAccount),
+            //         databaseURL: "https://mybus-191611.firebaseio.com"
+            //     });
+            // }
+            //
+            // var mapdata_ref = admin.database().ref('mapData/' + req.body.plate_number + '/bus_key');
+            //
+            // mapdata_ref.on('value', function(snapshot) {
+            //     if (snapshot.val() === ''){
+            //         var postData = {
+            //             latitude: req.body.latitude,
+            //             longitude: req.body.longitude,
+            //             countings: req.body.countings,
+            //             last_update: admin.database.ServerValue.TIMESTAMP
+            //         };
+            //         var updates = {};
+            //         updates['mapData/' + req.body.plate_number + snapshot.val()] = postData;
+            //         admin.database().ref().update(updates);
+            //
+            //         //update other database
+            //         update_db(req.body.latitude,req.body.longitude,req.body.countings,snapshot.val())
+            //     }else{
+            //         admin.database().ref('mapData/' + req.body.plate_number).set({
+            //             bus_key: bus_key,
+            //             plate_number: req.body.plate_number,
+            //             fleet_number: req.body.fleet_number,
+            //             countings: req.body.countings,
+            //             latitude: req.body.latitude,
+            //             longitude: req.body.longitude,
+            //             title: req.body.title,
+            //             description: req.body.description,
+            //             last_update: admin.database.ServerValue.TIMESTAMP,
+            //             date_created: admin.database.ServerValue.TIMESTAMP
+            //         });
+            //
+            //         //make copy to db
+            //         add_new(req.body.plate_number,req.body.fleet_number,req.body.countings,req.body.latitude,req.body.longitude,bus_key)
+            //     }
+            // });
         }
     }
 });
