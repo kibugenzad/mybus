@@ -6,7 +6,6 @@ let message = [];
 
 //get all buses
 router.post("/", function (req, res) {
-    console.log(req.body)
     const sql = "SELECT * FROM accounts WHERE transport_id = ? AND fullname = ?";
     db.connection.query(sql,[req.body.transport_id, req.body.fullname], function (err, result) {
         if (err) {
@@ -14,10 +13,7 @@ router.post("/", function (req, res) {
             return message.push("status", "error")
         }
 
-        console.log(result)
-
         if (result.length === 1){
-            console.log("founds")
             message.push(
                 {
                     "status": "success",
@@ -26,6 +22,7 @@ router.post("/", function (req, res) {
                     "email": result[0].email,
                     "profile_image": result[0].profile_image,
                 });
+            console.log(message)
             res.status(200).json(message);
         }else{
             message.push({"status": "Thare is not account associate to this data"})
