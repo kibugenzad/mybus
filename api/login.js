@@ -14,7 +14,10 @@ router.post("/", function (req, res) {
             return message.push("status", "error")
         }
 
+        console.log(result)
+
         if (result.length === 1){
+            console.log("founds")
             message.push(
                 {
                     "status": "success",
