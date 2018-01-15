@@ -19,7 +19,9 @@ const server = app.listen(app.get('port'), function () {
 //import the apis
 const mapData = require("./api/mapData");
 const get_all_buses = require("./api/all_buses");
+const login = require("./api/login");
 
 //firing the apis
 app.use("/api/mapData", mapData);
 app.use("/api/get_buses", get_all_buses);
+app.use("/api/login", login);
