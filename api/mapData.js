@@ -46,7 +46,7 @@ router.post("/", function (req, res) {
                             }
                             message.push({"status": "inserted"});
 
-                            return res.status(200).json(message);
+                            res.status(200).json(message);
                         })
                     }
                 }
