@@ -11,6 +11,8 @@ let message = [];
 
 router.post("/", function (req, res) {
 
+    console.log(req.body)
+
     const bus_key = randtoken.generate(50);
 
     if (req.body.latitude !== undefined || req.body.latitude !== undefined) {
