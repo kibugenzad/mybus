@@ -36,7 +36,6 @@ router.post("/", function (req, res) {
                             message.push({"status": "updated"});
                         })
                     }else{
-                        console.log("insert")
                         let mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
                         const bus_key = randtoken.generate(50);
                         const sql = "INSERT INTO `bus_map_data` (`id`,`bus_key`,`plate_number`,`fleet_number`,`passengers`,`latitude`,`longitude`,`location_name`,`description`,`last_update`,`date_created`) VALUES (0, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?)";
@@ -47,7 +46,7 @@ router.post("/", function (req, res) {
                             }
                             message.push({"status": "inserted"});
 
-                            return message;
+                            return res.status(200).json(message);
                         })
                     }
                 }
