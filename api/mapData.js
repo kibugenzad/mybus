@@ -16,17 +16,13 @@ router.post("/", function (req, res) {
     if (req.body.latitude !== undefined || req.body.latitude !== undefined) {
         if (req.body.plate_number !== '') {
 
-            console.log(req.body)
-
             //check if plate_number existed
             const sql_chk = "SELECT bus_key FROM bus_map_data  WHERE plate_number = ?";
             db.connection.query(sql_chk, [req.body.plate_number], function (err, result_bus) {
                 if(err){
-                    console.log(err.stack)
                     return message.push({"status": "error"})
                 }else {
                     if (result_bus.length > 0){
-                        console.log(result_bus)
                         //update
                         const sql_update = "UPDATE bus_map_data SET latitude = ?, longitude = ?, passengers = ? WHERE bus_key = ?";
                         db.connection.query(sql_update, [req.body.latitude, req.body.longitude, req.body.passengers, bus_key], function (err, updated_res) {
@@ -34,6 +30,7 @@ router.post("/", function (req, res) {
                                 return console.log("update", err.stack)
                             }
                             message.push({"status": "updated"});
+                            res.status(200).json(message);
                         })
                     }else{
                         let mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
