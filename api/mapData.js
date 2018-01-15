@@ -35,7 +35,7 @@ router.post("/", function (req, res) {
                         let mysqlTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
                         const bus_key = randtoken.generate(50);
                         const sql = "INSERT INTO `bus_map_data` (`id`,`bus_key`,`plate_number`,`fleet_number`,`passengers`,`latitude`,`longitude`,`location_name`,`description`,`last_update`,`date_created`) VALUES (0, ?, ? ,?, ?, ?, ?, ?, ?)";
-                        db.connection.query(sql, [bus_key, req.body.plate_number, req.body.fleet_number, req.body.passengers, req.body.latitude, req.body.longitude, req.body.location, description, mysqlTimestamp, mysqlTimestamp], function (err, result) {
+                        db.connection.query(sql, [bus_key, req.body.plate_number, req.body.fleet_number, req.body.passengers, req.body.latitude, req.body.longitude, req.body.location, req.body.description, mysqlTimestamp, mysqlTimestamp], function (err, result) {
                             if (err) {
                                 return message.push({"status": "error"})
                             }

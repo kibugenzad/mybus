@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89c83ba4-5021-485d-b81a-0b55d9f0b391" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/mapData.js" afterPath="$PROJECT_DIR$/api/mapData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,8 +30,8 @@
       <file leaf-file-name="mapData.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/mapData.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+            <state relative-caret-position="499">
+              <caret line="37" column="204" lean-forward="false" selection-start-line="37" selection-start-column="204" selection-end-line="37" selection-end-column="204" />
               <folding />
             </state>
           </provider>
@@ -68,9 +66,9 @@
         <option value="$PROJECT_DIR$/config/firebase.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/api/all_buses.js" />
-        <option value="$PROJECT_DIR$/api/mapData.js" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/api/login.js" />
+        <option value="$PROJECT_DIR$/api/mapData.js" />
       </list>
     </option>
   </component>
@@ -196,12 +194,12 @@
       <workItem from="1515579972497" duration="20902000" />
       <workItem from="1515737502064" duration="4799000" />
       <workItem from="1515924721151" duration="1854000" />
-      <workItem from="1516013094106" duration="2075000" />
+      <workItem from="1516013094106" duration="3246000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29630000" />
+    <option name="totallyTimeSpent" value="30801000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1421" height="827" extended-state="0" />
@@ -370,8 +368,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/mapData.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+        <state relative-caret-position="499">
+          <caret line="37" column="204" lean-forward="false" selection-start-line="37" selection-start-column="204" selection-end-line="37" selection-end-column="204" />
           <folding />
         </state>
       </provider>
