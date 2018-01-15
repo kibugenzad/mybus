@@ -22,12 +22,12 @@ router.post("/", function (req, res) {
                     "fullname": result[0].fullname,
                     "email": result[0].email,
                     "profile_image": result[0].profile_image,
-                })
+                });
+            res.status(200).json(message);
         }else{
             message.push({"status": "Thare is not account associate to this data"})
+            res.status(200).json(message);
         }
-
-        res.status(200).json(message);
     })
 });
 
