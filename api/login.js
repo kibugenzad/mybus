@@ -7,7 +7,7 @@ let message = [];
 //get all buses
 router.post("/", function (req, res) {
     console.log(req.body)
-    const sql = "SELECT * FROM account WHERE transport_id = ? AND fullname = ?";
+    const sql = "SELECT * FROM accounts WHERE transport_id = ? AND fullname = ?";
     db.connection.query(sql,[req.body.transport_id, req.body.fullname], function (err, result) {
         if (err) {
             console.log(err.stack);
