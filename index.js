@@ -17,11 +17,13 @@ const server = app.listen(app.get('port'), function () {
 });
 
 //import the apis
-const mapData = require("./api/mapData");
+const new_bus = require("./api/new_bus");
 const get_all_buses = require("./api/all_buses");
+const location_info = require("./api/location_info");
 const login = require("./api/login");
 
 //firing the apis
-app.use("/api/mapData", mapData);
-app.use("/api/get_buses", get_all_buses);
+app.use("/api/new_bus", new_bus);
+app.use("/api/get_all_buses", get_all_buses);
+app.use("/api/update_location_info", location_info);
 app.use("/api/login", login);
