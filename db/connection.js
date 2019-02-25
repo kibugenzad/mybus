@@ -1,12 +1,13 @@
+
 const mysql = require('mysql');
 
 // create connection for localhost
 
 const connection = mysql.createConnection({
-    host: '192.168.64.2',
+    host: 'localhost',
     socket: '/opt/lampp/var/mysql/mysql.sock',
-    user: 'nodeapp',
-    password: '',
+    user: 'root',
+    password: '@Data250',
     database: 'smart_transport'
 });
 

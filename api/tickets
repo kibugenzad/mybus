@@ -1,0 +1,99 @@
+const express = require('express');
+const router = express.Router();
+const moment = require('moment');
+var admin = require('firebase-admin');
+var  request = require ("request");
+var async = require("async");
+var midnight = "0:00:00";
+var now = null;
+
+const db = require("../db/connection");
+var serviceAccount = require('./serviceAccountKey.json');
+let message = [];
+
+function updateFirebase(plate_number, tickets) {
+    //save data to firebase
+    if (admin.apps.length === 0) {
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            databaseURL: "https://mybus-191611.firebaseio.com"
+        });
+    }
+    console.log(plate_number+" "+tickets)
+    var mapdata_ref = admin.database().ref('mapData/').child(plate_number);
+    mapdata_ref.on('value', function(snapshot) {
+        var postData = {
+            tickets: tickets
+        };
+        var updates = {};
+        admin.database().ref('mapData/').child(plate_number).update(postData);
+    });
+}
+
+//get updates buses
+router.post("/", function (req, res) {
+
+    let today = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+    let tomorrow  = moment(new Date()).add(1,'days').format('YYYY-MM-DD HH:mm:ss');
+    todaytimestamp = moment(today).format("X");
+    tomorrowtimestamp = moment(tomorrow).format("X");
+
+    async.waterfall([
+        function (next) {
+            let sql = "SELECT * FROM `bus_info`"
+            db.connection.query(sql , function (err, result) {
+                if (err){
+                    return  next(null, err.stack);
+                }
+
+                next(null, result);
+            })
+        },function(result, next){
+            var return_data = [];
+            result.forEach(function(resultObject){
+                return_data.push(function(callback) {
+
+                    var dataString = '{"params": {"fetch": { "range": [1518469200000,1518555599999],"appid": "015e7b21104f1db71c","devicename": "'+resultObject.plate_number+'"}}}'
+                    var options = {
+                        url: 'https://api.mobitill.com/v1/transactions/tickets',
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: dataString
+                    };
+
+                    request(options, function (error, response, body) {
+                        if (!error && response.statusCode == 200) {
+                            resultObject['tickets'] = JSON.parse(body);
+                            callback(null, resultObject);
+                        }
+                    });
+                })
+            })
+
+            //performing calls async parallel to each other
+            async.parallel(return_data, function(err, results) {
+                //executed as soon as all calls are finished
+                if (err) {
+                    next(err, null);
+                } else {
+                    next(null, results);
+                }
+            });
+        },
+
+    ], function (err,results) {
+        if (err){
+            res.status(200).json({"status": "error"})
+        }
+        for (i in results){
+            console.log(results[i].tickets.data)
+            updateFirebase(results[i].plate_number,results[i].tickets.data)
+        }
+
+        res.status(200).json({"status": "tickets retrieved"});
+    });
+});
+
+module.exports = router;
